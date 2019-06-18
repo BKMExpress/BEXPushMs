@@ -1,0 +1,135 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: ${APP_NAME}
+objects:
+  - apiVersion: v1
+    kind: DeploymentConfig
+    metadata:
+      labels:
+        app: ${APP_NAME}
+      name: ${APP_NAME}
+      namespace: devops
+    spec:
+      replicas: 5
+      revisionHistoryLimit: 10
+      selector:
+        app: ${APP_NAME}
+        deploymentconfig: ${APP_NAME}
+      strategy:
+        activeDeadlineSeconds: 21600
+        resources: {}
+        rollingParams:
+          intervalSeconds: 1
+          maxSurge: 25%
+          maxUnavailable: 25%
+          timeoutSeconds: 600
+          updatePeriodSeconds: 1
+        type: Rolling
+      template:
+        metadata:
+          labels:
+            app: ${APP_NAME}
+            deploymentconfig: ${APP_NAME}
+        spec:
+          containers:
+            - env:
+                - name: http_proxy
+                  value: proxserver.local
+                - name: https_proxy
+                  value: proxyserver.local
+                - name: JAVA_TOOL_OPTIONS
+                  value: >-
+                    -Dhttp.proxyHost=proxyserver.local -Dhttp.proxyPort=8080
+                    -Dhttps.proxyHost=proxyserver.local -Dhttps.proxyPort=8080
+              image: 'artifactory/${APP_NAME}/${APP_NAME}:latest'
+              imagePullPolicy: Always
+              livenessProbe:
+                exec:
+                  command:
+                    - uptime
+                failureThreshold: 3
+                initialDelaySeconds: 10
+                periodSeconds: 10
+                successThreshold: 1
+                timeoutSeconds: 1
+              name: ${APP_NAME}
+              ports:
+                - containerPort: 8080
+                  protocol: TCP
+              readinessProbe:
+                failureThreshold: 3
+                httpGet:
+                  path: /
+                  port: 8080
+                  scheme: HTTP
+                periodSeconds: 10
+                successThreshold: 1
+                timeoutSeconds: 1
+              resources:
+                limits:
+                  cpu: 500m
+                  memory: 1Gi
+                requests:
+                  cpu: 200m
+                  memory: 400Mi
+              terminationMessagePath: /dev/termination-log
+              terminationMessagePolicy: File
+            - env:
+                - name: CONSUL_MASTER_1
+                  value: 192.168.xxx.111
+                - name: CONSUL_MASTER_2
+                  value: 192.168.xxx.222
+                - name: CONSUL_MASTER_3
+                  value: 192.168.xxx.333
+                - name: DATACENTER
+                  value: bkm-center
+              image: 'artifactory:5001/consul-client-bkm/consul-client-bkm:latest'
+              imagePullPolicy: Always
+              livenessProbe:
+                exec:
+                  command:
+                    - uptime
+                failureThreshold: 3
+                initialDelaySeconds: 2
+                periodSeconds: 10
+                successThreshold: 1
+                timeoutSeconds: 1
+              name: consul-client-bkm
+              ports:
+                - containerPort: 5800
+                  protocol: TCP
+              resources:
+                limits:
+                  cpu: 500m
+                  memory: 1Gi
+              terminationMessagePath: /dev/termination-log
+              terminationMessagePolicy: File
+          dnsPolicy: ClusterFirst
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          securityContext: {}
+          terminationGracePeriodSeconds: 30
+      test: false
+      triggers: []
+parameters:
+  - name: APP_NAME
+    displayName: Application Name
+    description: Unique application name
+    value: ms-push
+    required: true
+  - name: APP_VERSION
+    displayName: App version
+    description: App version
+    value: latest
+    required: true
+  - name: REGISTRY
+    displayName: image registry
+    description: image registry
+    value: docker-registry.default.svc:7000/
+    required: true
+  - name: PROJECT_NAME
+    displayName: Openshift Project Name
+    description: Openshift Project Name
+    value: devops
+    required: true

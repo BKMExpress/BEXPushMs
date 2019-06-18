@@ -1,0 +1,413 @@
+{
+	"info": {
+		"name": "Consul - PushNotification",
+		"_postman_id": "9e447db6-e77f-359c-b725-55fd6c751dd3",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "dbConnectionUrl",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "jdbc:mysql://localhost:3306/pushtest?useUnicode=true&characterEncoding=UTF-8"
+				},
+				"url": {
+					"raw": "localhost:8500/v1/kv/BKMPushNotification/dbConnectionUrl",
+					"host": [
+						"localhost"
+					],
+					"port": "8500",
+					"path": [
+						"v1",
+						"kv",
+						"BKMPushNotification",
+						"dbConnectionUrl"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "dbConnectionUrl copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "jdbc:mysql://localhost:3306/pushtest?useUnicode=true&characterEncoding=UTF-8"
+				},
+				"url": {
+					"raw": "localhost:8500/v1/kv/BKMPushNotification/dbConnectionUrl",
+					"host": [
+						"localhost"
+					],
+					"port": "8500",
+					"path": [
+						"v1",
+						"kv",
+						"BKMPushNotification",
+						"dbConnectionUrl"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "dbDriverClassName",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "com.mysql.jdbc.Driver"
+				},
+				"url": {
+					"raw": "localhost:8500/v1/kv/BKMPushNotification/dbDriverClassName",
+					"host": [
+						"localhost"
+					],
+					"port": "8500",
+					"path": [
+						"v1",
+						"kv",
+						"BKMPushNotification",
+						"dbDriverClassName"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "dbInitialSize",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "1"
+				},
+				"url": {
+					"raw": "localhost:8500/v1/kv/BKMPushNotification/dbInitialSize",
+					"host": [
+						"localhost"
+					],
+					"port": "8500",
+					"path": [
+						"v1",
+						"kv",
+						"BKMPushNotification",
+						"dbInitialSize"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "dbLogAbandoned",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "true"
+				},
+				"url": {
+					"raw": "localhost:8500/v1/kv/BKMPushNotification/dbLogAbandoned",
+					"host": [
+						"localhost"
+					],
+					"port": "8500",
+					"path": [
+						"v1",
+						"kv",
+						"BKMPushNotification",
+						"dbLogAbandoned"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "dbMaxActive",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "100"
+				},
+				"url": {
+					"raw": "localhost:8500/v1/kv/BKMPushNotification/dbMaxActive",
+					"host": [
+						"localhost"
+					],
+					"port": "8500",
+					"path": [
+						"v1",
+						"kv",
+						"BKMPushNotification",
+						"dbMaxActive"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "dbMaxIdle",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "2"
+				},
+				"url": {
+					"raw": "localhost:8500/v1/kv/BKMPushNotification/dbMaxIdle",
+					"host": [
+						"localhost"
+					],
+					"port": "8500",
+					"path": [
+						"v1",
+						"kv",
+						"BKMPushNotification",
+						"dbMaxIdle"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "dbMaxWait",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "2"
+				},
+				"url": {
+					"raw": "localhost:8500/v1/kv/BKMPushNotification/dbMaxWait",
+					"host": [
+						"localhost"
+					],
+					"port": "8500",
+					"path": [
+						"v1",
+						"kv",
+						"BKMPushNotification",
+						"dbMaxWait"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "dbMinIdle",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "1"
+				},
+				"url": {
+					"raw": "localhost:8500/v1/kv/BKMPushNotification/dbMinIdle",
+					"host": [
+						"localhost"
+					],
+					"port": "8500",
+					"path": [
+						"v1",
+						"kv",
+						"BKMPushNotification",
+						"dbMinIdle"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "dbPassword",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "1234"
+				},
+				"url": {
+					"raw": "localhost:8500/v1/kv/BKMPushNotification/dbPassword",
+					"host": [
+						"localhost"
+					],
+					"port": "8500",
+					"path": [
+						"v1",
+						"kv",
+						"BKMPushNotification",
+						"dbPassword"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "dbRemoveAbandoned",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "60"
+				},
+				"url": {
+					"raw": "localhost:8500/v1/kv/BKMPushNotification/dbRemoveAbandoned",
+					"host": [
+						"localhost"
+					],
+					"port": "8500",
+					"path": [
+						"v1",
+						"kv",
+						"BKMPushNotification",
+						"dbRemoveAbandoned"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "dbTestOnBorrow",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "true"
+				},
+				"url": {
+					"raw": "localhost:8500/v1/kv/BKMPushNotification/dbTestOnBorrow",
+					"host": [
+						"localhost"
+					],
+					"port": "8500",
+					"path": [
+						"v1",
+						"kv",
+						"BKMPushNotification",
+						"dbTestOnBorrow"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "dbUsername",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "PUSH_APP"
+				},
+				"url": {
+					"raw": "localhost:8500/v1/kv/BKMPushNotification/dbUsername",
+					"host": [
+						"localhost"
+					],
+					"port": "8500",
+					"path": [
+						"v1",
+						"kv",
+						"BKMPushNotification",
+						"dbUsername"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "dbValidationInterval",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "1000"
+				},
+				"url": {
+					"raw": "localhost:8500/v1/kv/BKMPushNotification/dbValidationInterval",
+					"host": [
+						"localhost"
+					],
+					"port": "8500",
+					"path": [
+						"v1",
+						"kv",
+						"BKMPushNotification",
+						"dbValidationInterval"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "dbValidationQuery",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "SELECT 1"
+				},
+				"url": {
+					"raw": "localhost:8500/v1/kv/BKMPushNotification/dbValidationQuery",
+					"host": [
+						"localhost"
+					],
+					"port": "8500",
+					"path": [
+						"v1",
+						"kv",
+						"BKMPushNotification",
+						"dbValidationQuery"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "conc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

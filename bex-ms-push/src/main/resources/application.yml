@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: BKMPushNotification
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        enabled: true
+      discovery:
+        healthCheckPath: /
+        healthCheckInterval: 30s
+        enabled: true
+        instanceId: ${spring.application.name}:${random.value}

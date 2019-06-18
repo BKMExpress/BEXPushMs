@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- For assistance related to logback-translator or configuration  -->
+<!-- files in general, please contact the logback user mailing list -->
+<!-- at http://www.qos.ch/mailman/listinfo/logback-user             -->
+<!--                                                                -->
+<!-- For professional support please see                            -->
+<!--    http://www.qos.ch/shop/products/professionalSupport         -->
+<!--                                                                -->
+<configuration>
+
+    <property name="BKM_LOG_PATH" value="/appdata/logs"></property>
+    <!--<property resource="application.yml" />-->
+    <!-- Errors were reported during translation. -->
+    <!-- No root logger configuration was found -->
+    <appender name="pushnotification" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--See http://logback.qos.ch/manual/appenders.html#RollingFileAppender-->
+        <!--and http://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy-->
+        <!--for further documentation-->
+        <file>${BKM_LOG_PATH}/pushnotification/pushnotification.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${BKM_LOG_PATH}/pushnotification/pushnotification.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!--<maxFileSize>100MB</maxFileSize>-->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- definition of appender STDOUT -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="net" level="INFO">
+        <appender-ref ref="pushnotification"/>
+    </logger>
+    <logger name="org" level="INFO">
+        <appender-ref ref="pushnotification"/>
+    </logger>
+    <logger name="com" level="INFO">
+        <appender-ref ref="pushnotification"/>
+    </logger>
+
+    <logger name="net" level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="org" level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="com" level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="org.springframework.jdbc" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+</configuration>
